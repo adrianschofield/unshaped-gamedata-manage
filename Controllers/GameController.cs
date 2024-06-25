@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using unshaped_gamedata_manage.Models;
 
 namespace unshaped_gamedata_manage.Controllers;
@@ -16,6 +17,7 @@ public class GameController : Controller
         _configuration = configuration;
     }
 
+    [Authorize(Roles="user-gamedata")]
     public IActionResult Index()
     {
         List<GameData> games = new List<GameData>();
@@ -48,6 +50,7 @@ public class GameController : Controller
         return View(games);
     }
 
+    [Authorize(Roles="Everyone")]
     public IActionResult Dashboard()
     {
         Dashboard data = new Dashboard();
