@@ -5,6 +5,7 @@
 
 # My personal changes
 appsettings.*
+.vscode
 
 # User-specific files
 *.rsuser
